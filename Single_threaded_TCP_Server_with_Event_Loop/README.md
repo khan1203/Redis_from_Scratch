@@ -1,6 +1,5 @@
 ## Redis_from_Scratch
-Here I gonna build in-memory data-store that is - Real REDIS from scratch. It is often used as a database, cache, and message broker server. 
-I gonna try to add all these features in it, in sha Allah.
+Here I gonna build in-memory data-store that is Real Redis-like Server from scratch. It is like a database, cache, and message broker server. I gonna try to add all these features in it, in sha Allah.
 
 | Feature                | Description                                                                            |
 | ---------------------- | -------------------------------------------------------------------------------------- |
