@@ -30,7 +30,7 @@ class TCPServer:
         try:
             while True:
                 conn, addr = self.server_socket.accept()
-                # Start a new thread for each client
+                # Start a new thread for each client (Multi-threaded)
                 threading.Thread(target=self.handle_client, args=(conn, addr)).start()
         except KeyboardInterrupt:
             print("\nShutting down server...")
