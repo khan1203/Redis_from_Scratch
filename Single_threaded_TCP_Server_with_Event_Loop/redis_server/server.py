@@ -1,5 +1,6 @@
 import socket
 import select
+from .response import *
 from .command import CommandHandler
 from .storage import DataStore
 
@@ -76,7 +77,7 @@ class RedisServer:
     def _process_command(self, command_line):
         parts = command_line.strip().split()
         if not parts:
-            return error("empty command")
+            return error("Empty command")
         return self.command_handler.execute(parts[0], *parts[1:])
 
     def _disconnect_client(self, client):
