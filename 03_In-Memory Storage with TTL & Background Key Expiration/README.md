@@ -1,7 +1,6 @@
 # 🧠 In-Memory Storage with TTL & Background Key Expiration
 
-Welcome to the **In-Memory Storage Lab**!  
-In this lab, we extend a basic Redis-like server to support **Time-To-Live (TTL)** functionality and **background key expiration**, closely mimicking real Redis behavior within a single-threaded event loop. ⚙️
+In this time, we extend a basic Redis-like server to support **Time-To-Live (TTL)** functionality and **background key expiration**, closely mimicking real Redis behavior within a single-threaded event loop. ⚙️
 
 ---
 
