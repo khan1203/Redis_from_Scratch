@@ -30,8 +30,16 @@ class RedisServer:
             try:
                 read, _, _ = select.select(
                     [self.server_socket] + list(self.clients.keys()),
-                    [], [], 1.0
-                )
+                    [], [], 5.0
+                ) 
+                '''
+                select will monitor the server socket and all client sockets for readability 
+                and will return lists of sockets that are ready for reading, writing, or have errors. 
+                Here, we are only interested in readability,
+                so we provide an empty list for write and error sockets.
+                timeout = 5.0 sec means it will check-in/wait-for every 5 seconds
+                
+                '''
                 
                 for sock in read:
                     if sock is self.server_socket:
@@ -45,14 +53,14 @@ class RedisServer:
                 print(f"Event loop error: {e}")
 
     def _accept_client(self):
-        client, addr = self.server_socket.accept()
+        client, addr = self.server_socket.accept() # accept() function will return a tuple (client_socket, address)
         client.setblocking(False)
         self.clients[client] = {"addr": addr, "buffer": b""}
         client.send(b"+OK\r\n")
 
     def _handle_client(self, client):
         try:
-            data = client.recv(4096)
+            data = client.recv(4096) # Receive up to 4096 bytes or 4KB of data from the client
             if not data:
                 self._disconnect_client(client)
                 return

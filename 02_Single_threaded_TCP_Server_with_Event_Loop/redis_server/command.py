@@ -16,8 +16,11 @@ class CommandHandler:
             "INFO": self.info
         }
 
-    def execute(self, command, *args): # execute("SET", "mykey", "myvalue"), args = ("mykey", "myvalue")
-        cmd = self.commands.get(command.upper()) # get the command function
+    def execute(self, command, *args, **kwargs):
+        '''
+        execute("SET", "mykey", "myvalue") where command = "SET" and args = ("mykey", "myvalue")
+        ''' 
+        cmd = self.commands.get(command.upper()) # get the key-value pair from the dictionary
         if cmd:
             return cmd(*args)
         return error(f"unknown command '{command}'")
