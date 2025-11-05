@@ -62,7 +62,7 @@ The system continuously monitors:
 ---
 
 ## 🧠 Summary
-This lab provides a deep dive into **how Redis manages expiring data** efficiently while remaining single-threaded. You’ll gain hands-on experience with **TTL mechanisms**, **event-driven expiration**, and **memory tracking** — all essential for building performant in-memory systems.
+This repo provides a deep dive into **how Redis manages expiring data** efficiently while remaining single-threaded. You’ll gain hands-on experience with **TTL mechanisms**, **event-driven expiration**, and **memory tracking** — all essential for building performant in-memory systems.
 
 ---
 
