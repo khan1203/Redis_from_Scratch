@@ -1,3 +1,0 @@
-[submodule "04_Redis AOF Persistence"]
-    path = 04_Redis AOF Persistence
-    url = https://github.com/khan1203/Redis_From_Scratch.git
