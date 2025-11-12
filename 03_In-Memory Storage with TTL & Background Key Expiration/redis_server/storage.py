@@ -44,6 +44,7 @@ class DataStore:
     * matches any characters
     ? matches a single character
     [abc] matches any character in the brackets
+
     """
 
     def keys(self, pattern="*"):
@@ -159,11 +160,13 @@ class DataStore:
 
     def _is_key_valid(self, key):
         """Check if key exists and hasn't expired (lazy expiration)"""
+
         if key not in self._data:
             return False
         
         value, _, expiry_time = self._data[key]
         if expiry_time is not None and expiry_time <= time.time():
+            '''time() returns the current time in seconds since the epoch as a floating point number.'''
             # Key expired, remove it
             self._memory_usage -= self._calculate_memory_usage(key, value)
             del self._data[key]
@@ -176,7 +179,7 @@ class DataStore:
         if isinstance(value, str):
             return "string"
         elif isinstance(value, int):
-            return "string"  # Redis stores numbers as strings
+            return "string"                # Redis stores numbers as strings
         elif isinstance(value, list):
             return "list"
         elif isinstance(value, set):
@@ -188,6 +191,7 @@ class DataStore:
 
     def _calculate_memory_usage(self, key, value):
         """Calculate approximate memory usage for a key-value pair"""
+
         key_size = len(str(key).encode('utf-8'))
         value_size = len(str(value).encode('utf-8'))
         return key_size + value_size + 64  # Add overhead for metadata
